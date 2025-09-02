@@ -3,167 +3,566 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name | Cybersecurity & AI Portfolio</title>
+    <title>Edwin Sanjo Soji - Cybersecurity Analyst</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        // Optional: You can configure Tailwind CSS here if needed
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        sans: ['Roboto', 'sans-serif'],
-                    },
-                },
-            },
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0f172a; /* Fallback & Base Color */
+            color: #cbd5e1; /* Light Slate Gray */
         }
-    </script>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body class="bg-gray-900 text-gray-200 font-sans">
 
-    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50 border-b border-gray-700">
-        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex items-center justify-between h-16">
-                <div class="text-2xl font-bold text-blue-500">Your Name</div>
-                <div class="hidden md:block">
-                    <div class="ml-10 flex items-baseline space-x-4">
-                        <a href="#about" class="text-gray-300 hover:text-blue-500 transition-colors px-3 py-2 rounded-md text-sm font-medium">About</a>
-                        <a href="#projects" class="text-gray-300 hover:text-blue-500 transition-colors px-3 py-2 rounded-md text-sm font-medium">Projects</a>
-                        <a href="#skills" class="text-gray-300 hover:text-blue-500 transition-colors px-3 py-2 rounded-md text-sm font-medium">Skills</a>
-                        <a href="#contact" class="text-gray-300 hover:text-blue-500 transition-colors px-3 py-2 rounded-md text-sm font-medium">Contact</a>
-                    </div>
-                </div>
+        /* Animated Gradient for Hero Headline */
+        .animated-gradient {
+            background: linear-gradient(90deg, #a5b4fc, #6366f1, #a5b4fc);
+            background-size: 200% auto;
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 4s linear infinite;
+        }
+
+        @keyframes shine {
+            to {
+                background-position: 200% center;
+            }
+        }
+
+        /* Scroll-Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Modal Styles */
+        .modal-backdrop {
+            transition: opacity 0.3s ease;
+        }
+
+        .modal-content {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        /* Custom styles for dark theme */
+        .bg-custom-dark { background-color: #0f172a; }
+        .bg-custom-light-section { background-color: #131f3796; } /* Subtle lighter section background */
+        .bg-custom-light-footer {background-color: #16264496;}
+        .bg-custom-card { background-color: #1e293b; }
+        .text-custom-light { color: #f8fafc; }
+        .text-custom-body { color: #cbd5e1; }
+        .text-custom-accent { color: #818cf8; }
+        .border-custom-line { border-color: #334155; }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- Header & Navigation -->
+    <header class="bg-slate-900/70 backdrop-blur-md shadow-lg shadow-slate-900/20 sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-mono font-bold text-custom-light tracking-wider">
+                [ ES ]
+            </a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#skills" class="text-slate-300 hover:text-indigo-400 transition duration-300">Skills</a>
+                <a href="#projects" class="text-slate-300 hover:text-indigo-400 transition duration-300">Projects</a>
+                <a href="#blogs" class="text-slate-300 hover:text-indigo-400 transition duration-300">Blogs</a>
+                <a href="#contact" class="bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-500 transition duration-300 shadow-sm">
+                    Contact Me
+                </a>
             </div>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-button" class="md:hidden text-slate-300 focus:outline-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
         </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden px-6 pt-2 pb-4 bg-slate-900">
+            <a href="#skills" class="block py-2 text-slate-300 hover:text-indigo-400">Skills</a>
+            <a href="#projects" class="block py-2 text-slate-300 hover:text-indigo-400">Projects</a>
+            <a href="#blogs" class="block py-2 text-slate-300 hover:text-indigo-400">Blogs</a>
+            <a href="#contact" class="block mt-2 bg-indigo-600 text-white px-4 py-2 rounded-md hover:bg-indigo-500 text-center">Contact Me</a>
+        </div>
     </header>
 
     <main>
-        <section id="hero" class="min-h-screen flex items-center justify-center text-center px-4">
-            <div>
-                <h1 class="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">Bridging the Gap Between <br class="hidden md:block"/> <span class="text-blue-500">Cybersecurity and AI</span></h1>
-                <p class="max-w-3xl mx-auto text-lg md:text-xl text-gray-400 mb-8">
-                    A student passionate about building secure, intelligent systems. Currently developing full-stack applications and exploring the future of digital defense.
-                </p>
-                <a href="#projects" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-transform hover:scale-105 inline-block">View My Work</a>
-            </div>
-        </section>
 
-        <section id="about" class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">About Me</h2>
-                <div class="max-w-3xl mx-auto text-center text-gray-400 space-y-4 text-lg">
-                    <p>
-                        I am a dedicated student with a primary focus on the intersection of Cybersecurity and AI. I believe the future of digital security lies in intelligent, automated systems, and I am driven to be at the forefront of that innovation.
+        <!-- Hero Section -->
+        <section id="hero" class="min-h-[calc(100vh-68px)] flex items-center reveal">
+            <div class="container mx-auto px-6">
+                <div class="w-full text-center">
+                    <p class="text-indigo-400 font-semibold text-lg">Hi, my name is</p>
+                    <h1 class="text-5xl md:text-7xl font-bold mt-2 text-custom-light animated-gradient">Edwin Sanjo Soji.</h1>
+                    <h2 class="text-4xl md:text-6xl font-bold mt-2 text-slate-400">I secure digital landscapes.</h2>
+                    <p class="mt-6 max-w-2xl mx-auto text-slate-300 text-lg">
+                        I'm a passionate cybersecurity student specializing in threat detection, vulnerability management, and securing enterprise systems. As a learner, I'm focused on understanding how to protect critical infrastructure and develop robust defense strategies against emerging cyber threats.
                     </p>
-                    <p>
-                        My journey into technology is complemented by a strong interest in physics, which gives me a unique perspective on the fundamental principles that govern modern computing. From coding in C++ to building machine learning models, I am constantly seeking new challenges to expand my skill set.
-                    </p>
+                    <div class="mt-8 flex justify-center space-x-4">
+                        <a href="#blogs" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-500 transition duration-300 shadow-lg shadow-indigo-600/20">
+                            Read My Articles
+                        </a>
+                        <a href="#contact" class="border-2 border-slate-600 text-slate-300 px-6 py-3 rounded-lg font-semibold hover:bg-slate-800 hover:border-slate-500 transition duration-300">
+                            Get In Touch
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="projects" class="py-20 px-4 bg-gray-800/50">
-            <div class="max-w-7xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">Projects</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 md:py-32 reveal bg-custom-light-section">
+            <div class="container mx-auto px-6">
+                 <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-custom-light">My Technical Toolkit</h2>
+                    <p class="text-lg text-slate-400 mt-2">Core technologies and tools I work with</p>
+                </div>
+                <div class="max-w-4xl mx-auto">
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8">
+                        <!-- Python -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Python"
+                            data-skill-desc="Utilizing Python for scripting and automation of security tasks, developing custom tools for penetration testing, and performing data analysis on security logs."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0 0 21 18V6a2.25 2.25 0 0 0-2.25-2.25H5.25A2.25 2.25 0 0 0 3 6v12a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Python</p>
+                        </div>
+                        <!-- Bash Scripting -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Bash Scripting"
+                            data-skill-desc="Writing scripts for automating system administration tasks in Linux environments, managing logs, and creating powerful command-line tools for security assessments."
+                            data-skill-proof-link="#">
+                             <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m6.75 7.5 3 2.25-3 2.25m4.5-3h9" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Bash Scripting</p>
+                        </div>
+                        <!-- Networking -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Networking"
+                            data-skill-desc="Solid understanding of TCP/IP, DNS, routing, and switching. Proficient in analyzing network protocols and identifying potential security vulnerabilities within network architectures."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c1.355 0 2.707-.157 4.008-.462M12 21c-1.355 0-2.707-.157-4.008-.462m8.016-11.48a4.5 4.5 0 0 0-8.032 0M12 3v2.25m0 16.5v-2.25m0 0a4.5 4.5 0 0 0 4.5 4.5m-4.5-4.5a4.5 4.5 0 0 0-4.5 4.5M12 3a4.5 4.5 0 0 0-4.5 4.5m4.5-4.5a4.5 4.5 0 0 0 4.5 4.5m-9 0a4.5 4.5 0 0 0-4.5 4.5m4.5-4.5a4.5 4.5 0 0 0 4.5-4.5m0 9a4.5 4.5 0 0 0 4.5-4.5" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Networking</p>
+                        </div>
+                        <!-- Cryptography -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Cryptography"
+                            data-skill-desc="Knowledge of cryptographic principles, including symmetric/asymmetric encryption, hashing algorithms, and digital signatures to ensure data confidentiality and integrity."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Cryptography</p>
+                        </div>
+                         <!-- Web Pentesting -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Web Pentesting"
+                            data-skill-desc="Identifying and exploiting vulnerabilities in web applications, such as SQL Injection, Cross-Site Scripting (XSS), and insecure configurations using tools like Burp Suite and OWASP ZAP.\n [abc](https://google.com)"
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286Zm0 13.036h.008v.008h-.008v-.008Z" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Web Pentesting</p>
+                        </div>
+                         <!-- Network Pentesting -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Network Pentesting"
+                            data-skill-desc="Conducting security assessments on network infrastructure. This includes port scanning, vulnerability scanning, and exploiting network-level weaknesses using tools like Nmap and Metasploit."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                               <path stroke-linecap="round" stroke-linejoin="round" d="M8.288 15.045A5.25 5.25 0 0 1 7.5 15.75c-1.464 0-2.827-.5-3.888-1.35M21 7.5c-1.464 0-2.827.5-3.888 1.35m0 0a5.25 5.25 0 0 1-1.4 5.4m1.4-5.4a5.25 5.25 0 0 0-1.4-5.4M12 21.75c-1.464 0-2.827-.5-3.888-1.35m3.888 1.35a5.25 5.25 0 0 0-1.4-5.4m1.4 5.4a5.25 5.25 0 0 1 1.4-5.4m-12.75-5.4a5.25 5.25 0 0 0-1.4 5.4m1.4-5.4a5.25 5.25 0 0 1 1.4 5.4" />
+                            </svg>
+                            <p class="font-semibold text-center text-slate-300">Network Pentesting</p>
+                        </div>
+                        <!-- Wireshark -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Wireshark"
+                            data-skill-desc="Using Wireshark for deep packet analysis to troubleshoot network issues, identify suspicious traffic, and understand how different protocols communicate across the network."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m15.75 15.75-2.489-2.489m0 0a3.375 3.375 0 1 0-4.773-4.773 3.375 3.375 0 0 0 4.774 4.774ZM21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Wireshark</p>
+                        </div>
+                        <!-- React -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="React"
+                            data-skill-desc="Building modern, responsive user interfaces for web applications using the React library. Proficient in component-based architecture, state management, and hooks."
+                            data-skill-proof-link="#">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M14.25 6.087c0-.66.537-1.192 1.192-1.192h.017c.655 0 1.192.532 1.192 1.192v.017c0 .655-.537 1.192-1.192 1.192h-.017c-.655 0-1.192-.537-1.192-1.192v-.017Zm-7.49 0c0-.66.537-1.192 1.192-1.192h.017c.655 0 1.192.532 1.192 1.192v.017c0 .655-.537 1.192-1.192 1.192h-.017c-.655 0-1.192-.537-1.192-1.192v-.017Zm7.49 3.562c0-.66.537-1.192 1.192-1.192h.017c.655 0 1.192.532 1.192 1.192v.017c0 .655-.537 1.192-1.192 1.192h-.017c-.655 0-1.192-.537-1.192-1.192v-.017Zm-7.49 0c0-.66.537-1.192 1.192-1.192h.017c.655 0 1.192.532 1.192 1.192v.017c0 .655-.537 1.192-1.192 1.192h-.017c-.655 0-1.192-.537-1.192-1.192v-.017Zm-4.496 8.24c0-3.26.786-6.326 2.24-8.995a.75.75 0 0 1 1.28.513c.04.19.06.385.06.582v4.868c0 .66-.537 1.192-1.192 1.192h-.017c-.655 0-1.192-.537-1.192-1.192v-.017c0-1.635-.484-3.19-1.34-4.595a.75.75 0 0 0-1.28-.513C2.86 6.326 2.075 9.39 2.075 12.65v4.495c0 3.26.786 6.326 2.24 8.995a.75.75 0 0 0 1.28-.513c.04-.19.06-.385.06-.582v-4.868c0-.66.537-1.192 1.192-1.192h.017c.655 0 1.192.537 1.192 1.192v.017c0 1.635.484 3.19 1.34 4.595a.75.75 0 0 1-1.28.513c-1.455-2.669-2.24-5.735-2.24-8.995v-4.495Zm15.002-8.24c0-3.26-.786-6.326-2.24-8.995a.75.75 0 0 0-1.28.513c-.04.19-.06.385-.06.582v4.868c0 .66.537 1.192 1.192 1.192h.017c.655 0 1.192-.537 1.192-1.192v-.017c0-1.635.484-3.19 1.34-4.595a.75.75 0 0 1 1.28-.513c1.455 2.669 2.24 5.735 2.24 8.995v4.495c0 3.26-.786 6.326-2.24 8.995a.75.75 0 0 1-1.28-.513c-.04-.19-.06-.385-.06-.582v-4.868c0-.66-.537-1.192-1.192-1.192h-.017c-.655 0-1.192.537-1.192-1.192v-.017c0-1.635-.484-3.19-1.34-4.595a.75.75 0 0 0-1.28-.513c1.455-2.669 2.24-5.735 2.24-8.995v-4.495Z" /></svg>
+                            <p class="font-semibold text-center text-slate-300">React</p>
+                        </div>
+                         <!-- Node.js -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Node.js"
+                            data-skill-desc="Developing scalable server-side applications and APIs using Node.js and the Express framework, often as part of the MERN stack."
+                            data-skill-proof-link="https://github.com/edwinsanjo/MERN-AUTH-BACKEND">
+                             <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Node.js</p>
+                        </div>
+                         <!-- MongoDB -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="MongoDB"
+                            data-skill-desc="Using MongoDB as a flexible, NoSQL database for modern web applications. Proficient in designing schemas and performing CRUD operations within the MERN stack."
+                            data-skill-proof-link="https://github.com/edwinsanjo/MERN-AUTH-BACKEND">
+                             <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 0v3.75m-16.5-3.75v3.75m16.5 0v3.75C20.25 16.153 16.556 18 12 18s-8.25-1.847-8.25-4.125v-3.75m16.5 0c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" /></svg>
+                            <p class="font-semibold text-center text-slate-300">MongoDB</p>
+                        </div>
+                        <!-- Flutter -->
+                        <div class="skill-item flex flex-col items-center justify-center p-4 bg-custom-card rounded-lg shadow-lg hover:shadow-indigo-500/20 hover:-translate-y-1 transition-all duration-300 cursor-pointer"
+                            data-skill-name="Flutter"
+                            data-skill-desc="Building cross-platform mobile applications for both Android and iOS from a single codebase using Google's Flutter framework and the Dart programming language."
+                            data-skill-proof-link="https://github.com/edwinsanjo/flutter_bloc_cubit_todo_app">
+                            <svg class="w-12 h-12 text-indigo-400 mb-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 0 0 6 3.75v16.5a2.25 2.25 0 0 0 2.25 2.25h7.5A2.25 2.25 0 0 0 18 20.25V3.75a2.25 2.25 0 0 0-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3m-3 18.75h3" /></svg>
+                            <p class="font-semibold text-center text-slate-300">Flutter</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 md:py-32 reveal bg-slate-900">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16">
+                    <h2 class="text-4xl font-bold text-custom-light">Things I've Built</h2>
+                    <p class="text-lg text-slate-400 mt-2">A selection of my personal projects.</p>
+                </div>
+                <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                     
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                        <h3 class="text-xl font-bold text-blue-400 mb-2">AI-Powered Phishing Email Detector</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">A machine learning model to detect phishing attempts in emails using NLP to analyze content for malicious characteristics.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Python</span>
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Scikit-learn</span>
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">NLTK</span>
+                    <!-- Project 1: MERN Auth Backend -->
+                    <a href="https://github.com/edwinsanjo/MERN-AUTH-BACKEND" target="_blank" rel="noopener noreferrer" class="block bg-custom-card rounded-lg shadow-lg flex flex-col hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-300">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-start">
+                                 <h3 class="text-xl font-bold text-custom-light mb-2">MERN Auth Backend</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm">A robust backend for user authentication in MERN stack apps, using JWT for secure sessions and password hashing.</p>
                         </div>
-                        <div class="mt-auto">
-                            <a href="#" class="font-semibold text-blue-500 hover:underline">GitHub Repo &rarr;</a>
+                        <div class="p-6 pt-0 mt-auto">
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">Node.js</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">Express</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">MongoDB</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">JWT</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 2: Flutter To-Do App -->
+                    <a href="https://github.com/edwinsanjo/flutter_bloc_cubit_todo_app" target="_blank" rel="noopener noreferrer" class="block bg-custom-card rounded-lg shadow-lg flex flex-col hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-300">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-start">
+                                 <h3 class="text-xl font-bold text-custom-light mb-2">Flutter To-Do App</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm">A clean to-do list app demonstrating state management in Flutter using BLoC and Cubit for a reactive UI.</p>
+                        </div>
+                        <div class="p-6 pt-0 mt-auto">
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">Flutter</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">Dart</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">BLoC</span>
+                            </div>
+                        </div>
+                    </a>
+
+                    <!-- Project 3: Cyber Punk Theme -->
+                    <a href="https://github.com/edwinsanjo/cyber-punk-theme" target="_blank" rel="noopener noreferrer" class="block bg-custom-card rounded-lg shadow-lg flex flex-col hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-300">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-start">
+                                 <h3 class="text-xl font-bold text-custom-light mb-2">Cyber Punk VS Code Theme</h3>
+                            </div>
+                            <p class="text-slate-400 text-sm">A vibrant, futuristic theme for Visual Studio Code, published on the official VS Code Marketplace.</p>
+                        </div>
+                        <div class="p-6 pt-0 mt-auto">
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">VS Code</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">JSON</span>
+                            </div>
+                        </div>
+                    </a>
+                    
+                     <!-- Project 4: School Management System (Private) -->
+                    <div id="private-project-card" class="bg-custom-card rounded-lg shadow-lg flex flex-col hover:shadow-indigo-500/20 hover:-translate-y-2 transition-all duration-300 cursor-pointer">
+                        <div class="p-6 flex-grow">
+                            <div class="flex justify-between items-start">
+                                 <h3 class="text-xl font-bold text-custom-light mb-2">School Management System</h3>
+                                 <div class="text-slate-400">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                      <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                                    </svg>
+                                 </div>
+                            </div>
+                            <p class="text-slate-400 text-sm">A comprehensive system to manage student records, grades, and administrative tasks. (Private Repository)</p>
+                        </div>
+                        <div class="p-6 pt-0 mt-auto">
+                            <div class="flex flex-wrap gap-2 text-xs">
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">MERN Stack</span>
+                                <span class="bg-slate-700 text-slate-300 px-2 py-1 rounded">Redux</span>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                        <h3 class="text-xl font-bold text-blue-400 mb-2">Full-Stack Web App (Case Study)</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">A case study on architecting a full-stack application with user authentication, database management, and a reactive front-end.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Next.js</span>
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Node.js</span>
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">MongoDB</span>
-                        </div>
-                        <div class="mt-auto">
-                             <a href="#" class="font-semibold text-blue-500 hover:underline">View on GitHub &rarr;</a>
-                        </div>
-                    </div>
+                </div>
+            </div>
+        </section>
 
-                    <div class="bg-gray-800 border border-gray-700 rounded-lg p-6 flex flex-col transition-transform hover:-translate-y-1">
-                        <h3 class="text-xl font-bold text-blue-400 mb-2">NPN Transistor Operation Analysis</h3>
-                        <p class="text-gray-400 mb-4 flex-grow">An academic project analyzing the principles of NPN transistors, including biasing, current flow, and modes of operation.</p>
-                        <div class="flex flex-wrap gap-2 mb-6">
-                             <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Physics</span>
-                            <span class="bg-gray-700 text-gray-300 text-xs font-semibold px-3 py-1 rounded-full">Electronics</span>
-                        </div>
-                        <div class="mt-auto">
-                             <a href="#" class="font-semibold text-blue-500 hover:underline">View Report &rarr;</a>
-                        </div>
+        <!-- Blogs Section -->
+        <section id="blogs" class="py-20 md:py-32 reveal bg-custom-light-section">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold text-custom-light">My Articles</h2>
+                    <p class="text-lg text-slate-400 mt-2">Writing about cybersecurity and technology on Hashnode.</p>
+                </div>
+                <div id="blog-list" class="grid md:grid-cols-1 lg:grid-cols-2 gap-10">
+                    <!-- Blog posts will be dynamically injected here -->
+                    <div id="blog-loader" class="text-center col-span-full">
+                        <p class="text-lg text-slate-400">Fetching latest posts...</p>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <section id="skills" class="py-20 px-4">
-            <div class="max-w-7xl mx-auto">
-                 <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-blue-500">Technical Skills</h2>
-                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                     <div class="bg-gray-800/50 p-6 rounded-lg">
-                         <h3 class="text-xl font-bold text-gray-200 mb-4">Languages</h3>
-                         <ul class="space-y-2 text-gray-400">
-                             <li>Python</li>
-                             <li>C++</li>
-                             <li>JavaScript (Node.js)</li>
-                             <li>SQL</li>
-                         </ul>
-                     </div>
-                     <div class="bg-gray-800/50 p-6 rounded-lg">
-                         <h3 class="text-xl font-bold text-gray-200 mb-4">Frameworks & Tech</h3>
-                         <ul class="space-y-2 text-gray-400">
-                            <li>Scikit-learn & Pandas</li>
-                            <li>Next.js & React</li>
-                            <li>Express.js</li>
-                            <li>Git & GitHub</li>
-                         </ul>
-                     </div>
-                     <div class="bg-gray-800/50 p-6 rounded-lg">
-                         <h3 class="text-xl font-bold text-gray-200 mb-4">Areas of Focus</h3>
-                         <ul class="space-y-2 text-gray-400">
-                            <li>Cybersecurity Principles</li>
-                            <li>AI & Machine Learning</li>
-                            <li>Network Security</li>
-                            <li>Threat Detection</li>
-                         </ul>
-                     </div>
-                 </div>
-            </div>
-        </section>
 
-        <section id="contact" class="py-20 px-4 text-center">
-            <div class="max-w-3xl mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold mb-4 text-blue-500">Get In Touch</h2>
-                <p class="text-lg text-gray-400 mb-8">
-                    I'm always open to discussing new projects, creative ideas, or opportunities. Feel free to reach out!
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 md:py-32 text-center reveal bg-slate-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-4xl font-bold text-custom-light">Get In Touch</h2>
+                <p class="text-lg text-slate-400 mt-4 max-w-2xl mx-auto">
+                    I'm always open to connecting with other professionals. Feel free to reach out on any of these platforms!
                 </p>
-                 <a href="mailto:your.email@example.com" class="bg-blue-600 text-white font-bold py-3 px-6 rounded-md hover:bg-blue-700 transition-transform hover:scale-105 inline-block">Say Hello</a>
-                <div class="mt-12 flex justify-center space-x-6">
-                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">LinkedIn</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">GitHub</a>
-                    <a href="#" class="text-gray-400 hover:text-blue-500 transition-colors">Twitter</a>
+                <div class="mt-8 flex justify-center space-x-6">
+                     <!-- GitHub -->
+                    <a href="https://github.com/edwinsanjo" target="_blank" rel="noopener noreferrer" class="text-slate-400 hover:text-indigo-400 transition duration-300" aria-label="GitHub">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.168 6.839 9.49.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12c0-5.523-4.477-10-10-10z" clip-rule="evenodd" /></svg>
+                    </a>
+                    <!-- LinkedIn -->
+                     <a href="https://linkedin.com/in/edwin-sanjo-soji" class="text-slate-400 hover:text-indigo-400 transition duration-300" aria-label="LinkedIn">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/_edwin_12_" class="text-slate-400 hover:text-indigo-400 transition duration-300" aria-label="Instagram">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.07 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.162 6.162 6.162 6.162-2.759 6.162-6.162-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44 1.441-.645 1.441-1.44-.645-1.44-1.441-1.44z"/></svg>
+                    </a>
+                    <!-- Twitter/X -->
+                    <a href="https://x.com/edwinsanjosoji" class="text-slate-400 hover:text-indigo-400 transition duration-300" aria-label="Twitter">
+                        <svg class="w-10 h-10" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                    </a>
                 </div>
             </div>
         </section>
+
     </main>
-    
-    <footer class="bg-gray-800 border-t border-gray-700 py-6">
-        <div class="max-w-7xl mx-auto px-4 text-center text-gray-500">
-            <p>&copy; 2025 Your Name. All Rights Reserved.</p>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 border-t border-slate-800 bg-custom-light-footer">
+        <div class="container mx-auto px-6 py-8 text-center text-slate-400">
+            <p class="text-lg font-semibold text-custom-light">Edwin Sanjo Soji</p>
+            <p class="mt-2">Crafted with pixels, passion, and a little bit of code.</p>
+            <p class="text-sm text-slate-500 mt-4">&copy; 2025. All rights reserved.</p>
         </div>
     </footer>
 
+    <!-- Skill Details Modal -->
+    <div id="skill-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="modal-content bg-custom-card rounded-lg shadow-2xl p-8 max-w-lg w-full transform scale-95 opacity-0">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="skill-modal-title" class="text-2xl font-bold text-custom-light"></h3>
+                <button id="skill-modal-close" class="text-slate-400 hover:text-white text-3xl leading-none">&times;</button>
+            </div>
+            <p id="skill-modal-desc" class="text-slate-300 mb-6"></p>
+            <a id="skill-modal-link" href="#" target="_blank" rel="noopener noreferrer" class="inline-block bg-indigo-600 text-white px-5 py-2 rounded-lg font-semibold hover:bg-indigo-500 transition duration-300 hidden">
+                View Proof
+            </a>
+        </div>
+    </div>
+
+    <!-- Private Project Modal -->
+    <div id="private-project-modal" class="modal-backdrop fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50 hidden opacity-0">
+        <div class="modal-content bg-custom-card rounded-lg shadow-2xl p-8 max-w-lg w-full text-center transform scale-95 opacity-0">
+            <div class="flex justify-end">
+                 <button id="private-project-modal-close" class="text-slate-400 hover:text-white -mt-4 -mr-4">&times;</button>
+            </div>
+            <h3 class="text-2xl font-bold text-custom-light mb-4">Private Repository</h3>
+            <p class="text-slate-300 mb-6">The source code for this project is private. If you'd like to learn more or discuss potential contributions, please get in touch!</p>
+            <a href="#contact" id="private-project-contact-btn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-500 transition duration-300 shadow-lg shadow-indigo-600/20">
+                Contact Me
+            </a>
+        </div>
+    </div>
+
+
+    <!-- JS for interactivity -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            const mobileMenuLinks = mobileMenu.getElementsByTagName('a');
+            for (let link of mobileMenuLinks) {
+                link.addEventListener('click', () => {
+                    setTimeout(() => mobileMenu.classList.add('hidden'), 100);
+                });
+            }
+            
+            // --- Scroll-Reveal Animation ---
+            const revealElements = document.querySelectorAll('.reveal');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, { threshold: 0.1 });
+            revealElements.forEach(el => observer.observe(el));
+
+
+            // --- Modal Logic ---
+            const skillModal = document.getElementById('skill-modal');
+            const privateProjectModal = document.getElementById('private-project-modal');
+            
+            const openModal = (modal) => {
+                if (!modal) return;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('opacity-0');
+                    modal.querySelector('.modal-content').classList.remove('scale-95', 'opacity-0');
+                }, 10);
+            };
+
+            const closeModal = (modal) => {
+                if (!modal) return;
+                modal.classList.add('opacity-0');
+                modal.querySelector('.modal-content').classList.add('scale-95', 'opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            };
+
+            // --- Skill Modal ---
+            const skillItems = document.querySelectorAll('.skill-item');
+            const skillModalTitle = document.getElementById('skill-modal-title');
+            const skillModalDesc = document.getElementById('skill-modal-desc');
+            const skillModalLink = document.getElementById('skill-modal-link');
+
+            skillItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const name = item.dataset.skillName;
+                    const desc = item.dataset.skillDesc;
+                    const proofLink = item.dataset.skillProofLink;
+
+                    skillModalTitle.textContent = name;
+                    skillModalDesc.textContent = desc;
+
+                    if (proofLink && proofLink !== "#") {
+                        skillModalLink.href = proofLink;
+                        skillModalLink.classList.remove('hidden');
+                    } else {
+                        skillModalLink.classList.add('hidden');
+                    }
+
+                    openModal(skillModal);
+                });
+            });
+            
+            document.getElementById('skill-modal-close').addEventListener('click', () => closeModal(skillModal));
+            skillModal.addEventListener('click', (e) => {
+                 if (e.target === skillModal) closeModal(skillModal);
+            });
+
+
+            // --- Private Project Modal ---
+            document.getElementById('private-project-card').addEventListener('click', () => {
+                openModal(privateProjectModal);
+            });
+
+            document.getElementById('private-project-modal-close').addEventListener('click', () => closeModal(privateProjectModal));
+            document.getElementById('private-project-contact-btn').addEventListener('click', () => closeModal(privateProjectModal));
+            privateProjectModal.addEventListener('click', (e) => {
+                 if (e.target === privateProjectModal) closeModal(privateProjectModal);
+            });
+
+
+            // --- Hashnode Blog Fetching ---
+            const HASHNODE_USERNAME = "dhiya-adli"; // <-- IMPORTANT: REPLACE THIS
+            const blogList = document.getElementById('blog-list');
+            const blogLoader = document.getElementById('blog-loader');
+
+            const fetchHashnodeBlogs = async (username) => {
+                const query = `
+                    query Publication {
+                        publication(host: "${username}.hashnode.dev") {
+                            posts(first: 4) {
+                                edges {
+                                    node {
+                                        title
+                                        brief
+                                        slug
+                                        url
+                                        coverImage {
+                                            url
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                `;
+                
+                try {
+                    const response = await fetch('https://gql.hashnode.com/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ query }),
+                    });
+                    const result = await response.json();
+                    
+                    if (blogLoader) blogLoader.remove();
+
+                    const posts = result.data.publication.posts.edges;
+
+                    if (posts.length === 0) {
+                        blogList.innerHTML = '<p class="text-slate-400 text-center col-span-full">No articles found. Check the username in the script.</p>';
+                        return;
+                    }
+
+                    posts.forEach(post => {
+                        const postNode = post.node;
+                        const card = `
+                            <div class="blog-card bg-custom-card rounded-lg shadow-lg overflow-hidden group flex flex-col transform hover:-translate-y-2 transition-transform duration-300">
+                                <a href="${postNode.url}" target="_blank" rel="noopener noreferrer">
+                                    <img src="${postNode.coverImage?.url || 'https://placehold.co/600x400/1e293b/a5b4fc?text=Blog+Post'}" alt="${postNode.title} Cover Image" class="w-full h-64 object-cover">
+                                </a>
+                                <div class="p-6 flex flex-col flex-grow">
+                                    <h3 class="text-2xl font-bold text-custom-light mb-2">
+                                        <a href="${postNode.url}" target="_blank" rel="noopener noreferrer" class="hover:text-indigo-400 transition-colors">${postNode.title}</a>
+                                    </h3>
+                                    <p class="text-slate-400 mb-4 flex-grow">${postNode.brief}</p>
+                                    <a href="${postNode.url}" class="text-indigo-400 hover:text-indigo-300 font-semibold self-start" target="_blank" rel="noopener noreferrer">Read More &rarr;</a>
+                                </div>
+                            </div>
+                        `;
+                        blogList.insertAdjacentHTML('beforeend', card);
+                    });
+
+                } catch (error) {
+                    console.error("Error fetching Hashnode blogs:", error);
+                    if (blogLoader) blogLoader.remove();
+                    blogList.innerHTML = '<p class="text-red-400 text-center col-span-full">Failed to load articles. Please try again later.</p>';
+                }
+            };
+
+            if (HASHNODE_USERNAME !== "YOUR_HASHNODE_USERNAME") {
+                fetchHashnodeBlogs(HASHNODE_USERNAME);
+            } else {
+                blogLoader.innerHTML = '<p class="text-yellow-400 text-center col-span-full">Please set your Hashnode username in the script to fetch posts.</p>';
+            }
+        });
+    </script>
+
 </body>
 </html>
+
+
