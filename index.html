@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edwin Sanjo Soji - Cybersecurity Analyst</title>
+    <title>Edwin Sanjo Soji</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Google Fonts: Inter -->
@@ -486,7 +486,7 @@
 
 
             // --- Hashnode Blog Fetching ---
-            const HASHNODE_USERNAME = "dhiya-adli"; // <-- IMPORTANT: REPLACE THIS
+            const HASHNODE_USERNAME = "securebytes"; 
             const blogList = document.getElementById('blog-list');
             const blogLoader = document.getElementById('blog-loader');
 
@@ -553,12 +553,6 @@
                     blogList.innerHTML = '<p class="text-red-400 text-center col-span-full">Failed to load articles. Please try again later.</p>';
                 }
             };
-
-            if (HASHNODE_USERNAME !== "YOUR_HASHNODE_USERNAME") {
-                fetchHashnodeBlogs(HASHNODE_USERNAME);
-            } else {
-                blogLoader.innerHTML = '<p class="text-yellow-400 text-center col-span-full">Please set your Hashnode username in the script to fetch posts.</p>';
-            }
         });
     </script>
 
