@@ -466,7 +466,7 @@
 
 
     <!-- JS for interactivity -->
-    <script>
+   <script>
         document.addEventListener('DOMContentLoaded', () => {
 
             // --- Mobile Menu Toggle ---
@@ -557,7 +557,8 @@
 
 
             // --- Hashnode Blog Fetching ---
-            const HASHNODE_USERNAME = "njerii"; 
+            // TODO: UPDATE THIS TO YOUR ACTUAL USERNAME (e.g., "edwinsanjo")
+            const HASHNODE_USERNAME = "securebytes"; 
             const blogList = document.getElementById('blog-list');
             const blogLoader = document.getElementById('blog-loader');
 
@@ -592,10 +593,17 @@
                     
                     if (blogLoader) blogLoader.remove();
 
+                    // Check if publication exists before accessing posts
+                    if (!result.data.publication) {
+                        console.error("Publication not found. Check the hostname.");
+                        blogList.innerHTML = '<p class="text-red-400 text-center col-span-full">Blog not found. Check the username configuration.</p>';
+                        return;
+                    }
+
                     const posts = result.data.publication.posts.edges;
 
                     if (posts.length === 0) {
-                        blogList.innerHTML = '<p class="text-slate-400 text-center col-span-full">No articles found. Check the username in the script.</p>';
+                        blogList.innerHTML = '<p class="text-slate-400 text-center col-span-full">No articles found.</p>';
                         return;
                     }
 
@@ -624,65 +632,12 @@
                     blogList.innerHTML = '<p class="text-red-400 text-center col-span-full">Failed to load articles. Please try again later.</p>';
                 }
             };
+
+            // *** THE FIX: CALL THE FUNCTION HERE ***
+            fetchHashnodeBlogs(HASHNODE_USERNAME);
+
         });
     </script>
 
 </body>
 </html>
-
-
-
-
-
-        <!-- body {
-            font-family: 'Inter', sans-serif;
-            background-color: #0f172a; 
-            color: #cbd5e1; 
-        }
-
-        /* Animated Gradient for Hero Headline */
-        .animated-gradient {
-            background: linear-gradient(90deg, #a5b4fc, #6366f1, #a5b4fc);
-            background-size: 200% auto;
-            background-clip: text;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: shine 4s linear infinite;
-        }
-
-        @keyframes shine {
-            to {
-                background-position: 200% center;
-            }
-        }
-
-        /* Scroll-Reveal Animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.6s ease-out;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Modal Styles */
-        .modal-backdrop {
-            transition: opacity 0.3s ease;
-        }
-
-        .modal-content {
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-
-        /* Custom styles for dark theme */
-        .bg-custom-dark { background-color: #0f172a; }
-        .bg-custom-light-section { background-color: #131f3796; } 
-        .bg-custom-light-footer {background-color: #16264496;}
-        .bg-custom-card { background-color: #1e293b; }
-        .text-custom-light { color: #f8fafc; }
-        .text-custom-body { color: #cbd5e1; }
-        .text-custom-accent { color: #818cf8; }
-        .border-custom-line { border-color: #334155; } -->
