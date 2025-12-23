@@ -70,33 +70,24 @@
     </div>
 
     <script>
-        // --- DATA CONFIGURATION ---
-        // Add your certificates here. 
-        // Ensure your images are in the ./achievements/ folder.
+
         const achievementsData = [
             {
-                title: "Example Certificate 1",
-                issuer: "Udemy / Coursera",
-                imagePath: "./achievements/cert1.jpg", // REPLACE WITH REAL FILE NAME
-                date: "Jan 2025"
+                title: "Certificate of Participation - Hackathon",
+                issuer: "Tech Fest CBIT",
+                imagePath: "./achievements/hackathon-cbit.png", 
+                date: "Oct 2025"
             },
             {
                 title: "Cybersecurity Workshop",
                 issuer: "Google",
-                imagePath: "./achievements/cert2.jpg", // REPLACE WITH REAL FILE NAME
-                date: "Dec 2024"
+                imagePath: "./achievements/oracle.jpg", 
+                date: "Oct 2025"
             },
-            // Copy this block to add more certificates
-            {
-                title: "Hackathon Winner",
-                issuer: "TechFest 2024",
-                imagePath: "./achievements/cert3.jpg", 
-                date: "Oct 2024"
-            }
+            
         ];
 
         document.addEventListener('DOMContentLoaded', () => {
-            // 1. Render Certificates
             const grid = document.getElementById('cert-grid');
             
             achievementsData.forEach(cert => {
